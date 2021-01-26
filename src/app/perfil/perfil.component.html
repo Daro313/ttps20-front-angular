@@ -1,0 +1,15 @@
+<div class="container">
+  <h2>Bienvenido: {{ usuario.nombre }}</h2>
+  <div class="">
+    <h4>Mis datos:</h4>
+    <ul>
+      <li>{{ usuario.nombre }}</li>
+      <li>{{ usuario.apellido }}</li>
+      <li>{{ usuario.email }}</li>
+    </ul>
+  </div>
+  <div class="">
+    <input type="button" name="editar" value="Editar" routerLink="/users/perfil/editar">
+    <input type="button" name="" value="Ver Foodtrucks" (click)="verFoodtrucks()">
+  </div>
+</div>

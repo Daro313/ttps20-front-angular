@@ -1,0 +1,10 @@
+<div class="container">
+  <h2>Foodtrucks</h2>
+  <button type="button" name="button">Nuevo foodtruck</button>
+  <ul class="">
+    <li *ngFor="let f of foodtrucks">
+        {{f.id}} | {{f.nombre}} | {{ f.descripcion }} | {{ f.url }} | {{ f.whatsapp }} | {{ f.instagram }} | {{ f.twitter }}
+        <a href="">Editar</a> | <a href="#">Eliminar</a>
+    </li>
+  </ul>
+</div>
