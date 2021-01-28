@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { UsuarioService } from '../servicios/usuario.service'
+import { UsuarioService } from '../servicios/usuario.service';
+import { AutenticacionService } from '../servicios/autenticacion.service';
 import { Usuario } from '../modelos/usuario';
 import { Router } from '@angular/router';
+import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +12,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  private usuario: Usuario = {
+  usuario: Usuario = {
     id: 1,
     nombre: '',
     apellido:'',
@@ -18,23 +20,27 @@ export class LoginComponent implements OnInit {
     password: '',
     tipo:''
   }
+  error = '';
   submitted = false;
 
-  constructor(private usuarioService:UsuarioService, private router:Router) {
+  constructor(private autenticacionService:AutenticacionService, private router:Router) {
   }
 
   ngOnInit(): void {
+    this.autenticacionService.logout();
   }
 
   onSubmit() {
     this.submitted = true;
-    this.usuarioService.login(this.usuario.email, this.usuario.password)
+    this.autenticacionService.login(this.usuario.email, this.usuario.password)
+    .pipe(first())
     .subscribe(data => {
-      this.usuarioService.setUsuarioActual(data);
       this.router.navigate(['/users/perfil']);
     },
-    error => console.log(error)
-    );
+    //error => console.log(error)
+    error => {
+      this.error = 'Compruebe el nombre de usuario o la contraseña';
+    });
    }
 
 }

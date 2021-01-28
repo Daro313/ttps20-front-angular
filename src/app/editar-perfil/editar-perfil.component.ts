@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Usuario } from '../modelos/usuario';
 import { UsuarioService } from '../servicios/usuario.service';
+import { AutenticacionService } from '../servicios/autenticacion.service';
 import { Router } from '@angular/router';
+
+
 
 @Component({
   selector: 'app-editar-perfil',
@@ -9,12 +12,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./editar-perfil.component.css']
 })
 export class EditarPerfilComponent implements OnInit {
-  usuario: Usuario;
+  usuario!: Usuario;
 
-  constructor(private usuarioService:UsuarioService, private router:Router) { }
+  //constructor(private usuarioService:UsuarioService, private router:Router) { }
+  constructor(private autenticacionService:AutenticacionService, private usuarioService:UsuarioService, private router:Router) { }
 
   ngOnInit(): void {
-    this.usuario = this.usuarioService.getUsuarioActual();
+    this.usuario = this.autenticacionService.currentUserValue;
   }
 
   guardar() {

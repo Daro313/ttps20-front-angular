@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Usuario } from '../modelos/usuario';
 import { UsuarioService } from '../servicios/usuario.service';
+import { AutenticacionService } from '../servicios/autenticacion.service';
 
 @Component({
   selector: 'app-perfil',
@@ -11,14 +12,18 @@ export class PerfilComponent implements OnInit {
 
   usuario: Usuario;
 
-  constructor(private usuarioService:UsuarioService) { }
+  constructor(private autenticacionService:AutenticacionService) { }
 
   ngOnInit(): void {
-    this.usuario = this.usuarioService.getUsuarioActual();
+    this.usuario = this.autenticacionService.currentUserValue;
   }
 
   editUsuario(usuario:Usuario): void {
-    
+
+  }
+
+  verFoodtrucks(): void{
+
   }
 
 }

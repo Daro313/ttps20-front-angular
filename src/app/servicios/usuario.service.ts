@@ -36,7 +36,7 @@ export class UsuarioService {
 */
   updateUsuario(usuario:Usuario): Observable<any> {
     const foodtUrl = `http://localhost:8080/foodtruckme-spring/foodtruckers/${usuario.id}`;
-    this.setUsuarioActual(usuario);
+    //this.setUsuarioActual(usuario);
     return this.http.put(foodtUrl, usuario, this.httpOptions);
   }
 
