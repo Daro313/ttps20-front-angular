@@ -7,47 +7,20 @@ import { AuthGuard } from './guards/auth.guard';
 import { TokenInterceptor } from './helpers/token.interceptor';
 
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
-import { RegisterFormComponent } from './register-form/register-form.component';
-import { UsuariosComponent } from './usuarios/usuarios.component';
-import { EventosComponent } from './eventos/eventos.component';
-import { FoodtrucksComponent } from './foodtrucks/foodtrucks.component';
-import { PerfilComponent } from './perfil/perfil.component';
-import { EditarPerfilComponent } from './editar-perfil/editar-perfil.component';
-import { EditarFoodtruckComponent } from './editar-foodtruck/editar-foodtruck.component';
+import { AppRoutingModule, routingComponents } from './app-routing.module';
 
 
-const appRoutes: Routes = [
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterFormComponent },
-  { path: 'users', component: UsuariosComponent, canActivate:[AuthGuard] },
-  { path: 'users/perfil', component: PerfilComponent, canActivate:[AuthGuard]},
-  { path: 'users/perfil/editar/:id', component: RegisterFormComponent, canActivate:[AuthGuard] },
-  { path: 'foodtrucks', component: FoodtrucksComponent, canActivate:[AuthGuard] },
-  { path: 'eventos', component: EventosComponent, canActivate:[AuthGuard] }
-]
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    RegisterFormComponent,
-    UsuariosComponent,
-    EventosComponent,
-    FoodtrucksComponent,
-    PerfilComponent,
-    EditarPerfilComponent,
-    EditarFoodtruckComponent
+    routingComponents,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    RouterModule.forRoot(
-      appRoutes,
-      { enableTracing: true }
-    )
+    AppRoutingModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }

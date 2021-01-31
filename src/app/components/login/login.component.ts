@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { UsuarioService } from '../servicios/usuario.service';
-import { AutenticacionService } from '../servicios/autenticacion.service';
-import { Usuario } from '../modelos/usuario';
 import { Router } from '@angular/router';
 import { first } from 'rxjs/operators';
+
+import { AutenticacionService } from '../../servicios/autenticacion.service';
+import { UsuarioService } from '../../servicios/usuario.service';
+import { Usuario } from '../../modelos/usuario';
 
 @Component({
   selector: 'app-login',

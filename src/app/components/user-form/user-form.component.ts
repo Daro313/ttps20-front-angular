@@ -1,15 +1,16 @@
 import { Component } from '@angular/core';
-import { Usuario } from '../modelos/usuario';
-import { UsuarioService } from '../servicios/usuario.service';
 import { ActivatedRoute, Router } from '@angular/router'
-import { AutenticacionService } from '../servicios/autenticacion.service'
+
+import { AutenticacionService } from '../../servicios/autenticacion.service'
+import { Usuario } from '../../modelos/usuario';
+import { UsuarioService } from '../../servicios/usuario.service';
 
 @Component({
-  selector: 'app-register-form',
-  templateUrl: './register-form.component.html',
-  styleUrls: ['./register-form.component.css']
+  selector: 'app-user-form',
+  templateUrl: './user-form.component.html',
+  styleUrls: ['./user-form.component.css']
 })
-export class RegisterFormComponent {
+export class UserFormComponent {
 
   usuario: Usuario = {
     userId: 0,
