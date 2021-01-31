@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { Usuario } from '../modelos/usuario';
 import { UsuarioService } from '../servicios/usuario.service';
-import { Router } from '@angular/router'
+import { ActivatedRoute, Router } from '@angular/router'
+import { AutenticacionService } from '../servicios/autenticacion.service'
 
 @Component({
   selector: 'app-register-form',
@@ -11,24 +12,60 @@ import { Router } from '@angular/router'
 export class RegisterFormComponent {
 
   usuario: Usuario = {
-    id: 1,
-    nombre: "",
-    apellido: "",
-    email: "",
-    password: "",
-    tipo: ""
-  };
+    userId: 0,
+    nombre: '',
+    apellido:'',
+    email: '',
+    password: '',
+    rol:''
+  }
 
   uTipo = ['Foodtrucker', 'Organizador'];
+  edit = false;
   submitted = false;
 
-  constructor(private usuarioService:UsuarioService, private router:Router){}
-  onSubmit() {
+  constructor(private autenticacionService: AutenticacionService,
+    private usuarioService:UsuarioService,
+    private router:Router,
+    private activatedRoute:ActivatedRoute){}
+
+  ngOnInit(): void {
+    const params = this.activatedRoute.snapshot.params;
+    if (params.id){
+      console.log('esto es el paramsid ',params.id);
+      console.log('y esto el rol ', this.autenticacionService.currentUserValue.rol);
+      this.usuarioService.getUsuarioById(params.id,this.autenticacionService.currentUserValue.rol)
+      .subscribe(
+        res => {
+          console.log(res);
+          this.usuario = res;
+          this.edit = true;
+        },
+        err => console.error(err)
+      );
+    }
+  }
+
+  saveUsuario() {
     this.submitted = true;
-    console.log(this.usuario);
-    this.usuarioService.addUsuario(this.usuario).subscribe(
-      res=>this.router.navigate(['/users'])
+    this.usuarioService.createUsuario(this.usuario)
+    .subscribe(
+      res => {
+        console.log(res);
+        this.router.navigate(['/login']);
+      },
+      err => console.error(err)
     );
+  }
+
+  updateUsuario() {
+    this.usuarioService.updateUsuario(this.autenticacionService.currentUserValue.userId!,this.usuario)
+    .subscribe(
+      res => {
+        this.router.navigate(['/users/perfil'])
+      },
+      err => console.error(err)
+    )
   }
 
 }

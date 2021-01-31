@@ -1,5 +1,6 @@
 <div class="container">
   <h2>Bienvenido: {{ usuario.nombre }}</h2>
+  <a (click)="logout()">Cerrar sesion</a>
   <div class="">
     <h4>Mis datos:</h4>
     <ul>
@@ -9,7 +10,7 @@
     </ul>
   </div>
   <div class="">
-    <input type="button" name="editar" value="Editar" routerLink="/users/perfil/editar">
-    <input type="button" name="" value="Ver Foodtrucks" (click)="verFoodtrucks()">
+    <a [routerLink]="['/users/perfil/editar', usuario.id]">Editar</a><br>
+    <a href="#">Ver foodtrucks</a>
   </div>
 </div>

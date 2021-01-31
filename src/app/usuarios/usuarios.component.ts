@@ -15,11 +15,11 @@ export class UsuariosComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getUsuarios();
+    //this.getUsuarios();
   }
-
+/*
   getUsuarios(): void{
     this.usuarioService.getUsuarios()
     .subscribe(usuarios => this.usuarios = usuarios);
-  }
+  }*/
 }

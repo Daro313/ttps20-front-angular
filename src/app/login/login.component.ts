@@ -13,12 +13,12 @@ import { first } from 'rxjs/operators';
 })
 export class LoginComponent implements OnInit {
   usuario: Usuario = {
-    id: 1,
+    userId: 1,
     nombre: '',
     apellido:'',
     email: '',
     password: '',
-    tipo:''
+    rol:''
   }
   error = '';
   submitted = false;

@@ -1,9 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
-
+import { AuthGuard } from './guards/auth.guard';
+import { TokenInterceptor } from './helpers/token.interceptor';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -20,11 +21,11 @@ const appRoutes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterFormComponent },
-  { path: 'users', component: UsuariosComponent },
-  { path: 'users/perfil', component: PerfilComponent },
-  { path: 'users/perfil/editar', component: EditarPerfilComponent },
-  { path: 'foodtrucks', component: FoodtrucksComponent },
-  { path: 'eventos', component: EventosComponent }
+  { path: 'users', component: UsuariosComponent, canActivate:[AuthGuard] },
+  { path: 'users/perfil', component: PerfilComponent, canActivate:[AuthGuard]},
+  { path: 'users/perfil/editar/:id', component: RegisterFormComponent, canActivate:[AuthGuard] },
+  { path: 'foodtrucks', component: FoodtrucksComponent, canActivate:[AuthGuard] },
+  { path: 'eventos', component: EventosComponent, canActivate:[AuthGuard] }
 ]
 
 @NgModule({
@@ -48,7 +49,9 @@ const appRoutes: Routes = [
       { enableTracing: true }
     )
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
