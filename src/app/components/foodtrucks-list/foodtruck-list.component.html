@@ -1,1 +1,28 @@
-<p>foodtruck-list works!</p>
+  <h2>Foodtrucks:</h2>
+    <button class="btn btn-primary btn-sm" align="right">+</button>
+  <table class="table table-dark">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>NOMBRE</th>
+        <th>DESCRIPCION</th>
+        <th>URL</th>
+        <th>WHATSAPP</th>
+        <th>INSTAGRAM</th>
+        <th>TWITTER</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let ft of foodtrucks">
+        <td>{{ft.id}}</td>
+        <td>{{ft.nombre}}</td>
+        <td>{{ft.descripcion}}</td>
+        <td>{{ft.url}}</td>
+        <td>{{ft.whatsapp}}</td>
+        <td>{{ft.instagram}}</td>
+        <td>{{ft.twitter}}</td>
+        <td><button class="btn btn-info btn-sm">Editar</button></td>
+        <td><button class="btn btn-danger btn-sm">Eliminar</button></td>
+      </tr>
+    </tbody>
+  </table>

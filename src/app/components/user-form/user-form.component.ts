@@ -33,8 +33,6 @@ export class UserFormComponent {
   ngOnInit(): void {
     const params = this.activatedRoute.snapshot.params;
     if (params.id){
-      console.log('esto es el paramsid ',params.id);
-      console.log('y esto el rol ', this.autenticacionService.currentUserValue.rol);
       this.usuarioService.getUsuarioById(params.id,this.autenticacionService.currentUserValue.rol)
       .subscribe(
         res => {

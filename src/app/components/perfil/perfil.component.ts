@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+
 
 import { AutenticacionService } from '../../servicios/autenticacion.service';
 import { Usuario } from '../../modelos/usuario';
@@ -21,7 +22,11 @@ export class PerfilComponent implements OnInit {
     rol:''
   }
 
-  constructor(private autenticacionService:AutenticacionService, private usuarioService:UsuarioService, private router:Router) { }
+  constructor(
+    private autenticacionService:AutenticacionService,
+    private usuarioService:UsuarioService,
+    private router:Router,
+    private route:ActivatedRoute) { }
 
   ngOnInit(): void {
     this.getUsuarioById();
@@ -37,8 +42,8 @@ export class PerfilComponent implements OnInit {
     this.router.navigate(['/login']);
   }
 
-  verFoodtrucks(): void{
-
+  showFoodtrucks(): void{
+    this.router.navigate(['foodtrucks'], {relativeTo: this.route});
   }
 
 }

@@ -11,6 +11,9 @@
   </div>
   <div class="">
     <a [routerLink]="['/users/perfil/editar', usuario.id]">Editar</a><br>
-    <a href="#">Ver foodtrucks</a>
+    <button  (click)="showFoodtrucks()">Ver Foodtrucks</button>
+  </div>
+  <div class="">
+    <router-outlet></router-outlet>
   </div>
 </div>

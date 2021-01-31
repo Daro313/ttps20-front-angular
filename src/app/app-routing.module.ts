@@ -11,7 +11,14 @@ const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: UserFormComponent },
-  { path: 'users/perfil', component: PerfilComponent, canActivate:[AuthGuard]},
+  {
+    path: 'users/perfil',
+    component: PerfilComponent,
+    canActivate:[AuthGuard],
+    children: [
+      { path: 'foodtrucks',component: FoodtruckListComponent }
+    ]
+  },
   { path: 'users/perfil/editar/:id', component: UserFormComponent, canActivate:[AuthGuard] },
 ];
 

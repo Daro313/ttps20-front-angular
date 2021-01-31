@@ -33,4 +33,9 @@ export class UsuarioService {
     }
     return this.http.put<any>(`${this.API_URI}/organizadores/${id}`,u)
   }
+
+  getUserFoodtrucks(userId:number) {
+    return this.http.get<any>(`${this.API_URI}/foodtruckers/${userId}/foodtrucks`)
+  }
+
 }
