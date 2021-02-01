@@ -6,6 +6,7 @@ import { LoginComponent } from './components/login/login.component';
 import { UserFormComponent } from './components/user-form/user-form.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { FoodtruckListComponent } from './components/foodtrucks-list/foodtruck-list.component'
+import { FoodtruckFormComponent } from './components/foodtruck-form/foodtruck-form.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -16,10 +17,11 @@ const routes: Routes = [
     component: PerfilComponent,
     canActivate:[AuthGuard],
     children: [
-      { path: 'foodtrucks',component: FoodtruckListComponent }
+      { path: 'foodtrucks',component: FoodtruckListComponent },
+      { path: 'foodtrucks/new', component: FoodtruckFormComponent }
     ]
   },
-  { path: 'users/perfil/editar/:id', component: UserFormComponent, canActivate:[AuthGuard] },
+  { path: 'users/perfil/editar/:id', component: UserFormComponent, canActivate:[AuthGuard] }
 ];
 
 
@@ -33,5 +35,6 @@ export const routingComponents = [
   LoginComponent,
   UserFormComponent,
   PerfilComponent,
-  FoodtruckListComponent
+  FoodtruckListComponent,
+  FoodtruckFormComponent
 ]

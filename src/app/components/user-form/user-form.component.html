@@ -1,6 +1,7 @@
 <div class="container">
 
   <h2>Registro de usuario</h2>
+  <a [routerLink]="['/login']">Login</a>
   <form (ngSubmit)="edit ? updateUsuario() : saveUsuario()" #usuarioForm="ngForm">
     <div class="form-group">
       <label for="nombre">Nombre</label><br>

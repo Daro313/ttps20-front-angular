@@ -1,0 +1,41 @@
+<div class="container">
+  <h2>Foodtruck</h2>
+  <form (ngSubmit)="edit ? updateFoodtruck() : saveFoodtruck()" #usuarioForm="ngForm">
+    <div class="form-group">
+      <label for="nombre">Nombre del foodtruck</label><br>
+      <input [(ngModel)]="foodtruck.nombre" type="text" class="form-control" name="nombre" required>
+    </div>
+    <div class="form-group">
+      <label for="descripcion">Descripcion</label><br>
+      <input [(ngModel)]="foodtruck.descripcion" type="text" class="form-control" name="descripcion" required>
+    </div>
+    <div class="form-group">
+      <label for="url">Pagina web</label><br>
+      <input [(ngModel)]="foodtruck.url" type="url" class="form-control" name="url" required>
+    </div>
+    <div class="form-group">
+      <label for="email">Whatsapp</label><br>
+      <input [(ngModel)]="foodtruck.whatsapp" type="tel" class="form-control" name="whatsapp" required>
+    </div>
+    <div class="form-group">
+      <label for="instagram">Instagram</label><br>
+      <input [(ngModel)]="foodtruck.instagram" type="text" class="form-control" name="instagram" required>
+    </div>
+    <div class="form-group">
+      <label for="twitter">Twitter</label><br>
+      <input [(ngModel)]="foodtruck.twitter" type="text" class="form-control" name="twitter" required>
+    </div>
+    <div class="form-group">
+      <label for="sTipo">Tipo de servicio</label><br>
+      <select [(ngModel)]="foodtruck.servicio" class="form-control" name="sTipo" required>
+        <option *ngFor="let s of sTipo" [value]="s">{{t}}</option>
+      </select>
+    </div>
+    <div class="from-group">
+      <label for="imagen">Subir imagenes</label>
+      <input type="file" name="imagen" value="imagen">
+    </div>
+    <button type="submit" class="btn btn-success" name="">Guardar</button>
+    <button type="reset" class="btn btn-secondary" name="button">Limpiar</button>
+  </form>
+</div>

@@ -1,6 +1,6 @@
 <div class="container">
   <h2>Bienvenido: {{ usuario.nombre }}</h2>
-  <a (click)="logout()">Cerrar sesion</a>
+  <a [routerLink]="['/login']">Cerrar sesion</a>
   <div class="">
     <h4>Mis datos:</h4>
     <ul>
@@ -11,7 +11,8 @@
   </div>
   <div class="">
     <a [routerLink]="['/users/perfil/editar', usuario.id]">Editar</a><br>
-    <button  (click)="showFoodtrucks()">Ver Foodtrucks</button>
+    <button class="btn btn-primary btn-sm" (click)="showFoodtrucks()">Ver Foodtrucks</button>
+    <button class="btn btn-primary btn-sm" (click)="newFoodtruck()">Nuevo Foodtruck</button>
   </div>
   <div class="">
     <router-outlet></router-outlet>

@@ -46,4 +46,8 @@ export class PerfilComponent implements OnInit {
     this.router.navigate(['foodtrucks'], {relativeTo: this.route});
   }
 
+  newFoodtruck(): void{
+    this.router.navigate(['foodtrucks/new'], {relativeTo: this.route});
+  }
+
 }

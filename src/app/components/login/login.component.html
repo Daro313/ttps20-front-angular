@@ -1,5 +1,6 @@
 <div class="container">
   <h2>Login</h2>
+  <a [routerLink]="['/register']">Usuario nuevo</a>
   <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
     <div class="form-group">
       <label for="email">Email</label><br>
@@ -9,7 +10,6 @@
       <label for="pass">Password</label><br>
       <input [(ngModel)]="usuario.password" type="password" class="form-control" name="pass" required>
     </div>
-    <a href="register">Registrarse</a>
     <button type="submit" class="btn btn-success" name="">Ingresar</button>
   </form>
 </div>

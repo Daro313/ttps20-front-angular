@@ -9,7 +9,7 @@ import { Usuario } from '../modelos/usuario';
 
 @Injectable({providedIn: 'root'})
 export class UsuarioService {
-  API_URI = 'http://localhost:8080/foodtruckme-spring'
+  API_URI = 'http://localhost:8080/foodtruckme-spring';
 
   constructor(private http:HttpClient, private autenticacionService:AutenticacionService) { }
 
