@@ -33,8 +33,14 @@ export class PerfilComponent implements OnInit {
   }
 
   getUsuarioById() {
-    this.usuarioService.getUsuarioById(this.autenticacionService.currentUserValue.userId!, this.autenticacionService.currentUserValue.rol)
-      .subscribe(data => this.usuario = data );
+    const id = this.autenticacionService.currentUserValue.userId;
+    const rol = this.autenticacionService.currentUserValue.rol;
+    this.usuarioService.getUsuarioById(id!,rol)
+      .subscribe(
+        data => {
+          this.usuario = data;
+          this.usuario.rol=rol;
+      });
   }
 
   logout() {

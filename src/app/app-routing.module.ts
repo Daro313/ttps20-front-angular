@@ -18,10 +18,12 @@ const routes: Routes = [
     canActivate:[AuthGuard],
     children: [
       { path: 'foodtrucks',component: FoodtruckListComponent },
-      { path: 'foodtrucks/new', component: FoodtruckFormComponent }
+      { path: 'foodtrucks/new', component: FoodtruckFormComponent },
+      { path: 'foodtrucks/update/:id', component: FoodtruckFormComponent }
     ]
   },
   { path: 'users/perfil/editar/:id', component: UserFormComponent, canActivate:[AuthGuard] }
+
 ];
 
 

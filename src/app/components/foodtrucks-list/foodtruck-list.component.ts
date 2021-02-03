@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { AutenticacionService } from '../../servicios/autenticacion.service';
 import { UsuarioService } from '../../servicios/usuario.service';
+import { FoodtruckService } from "../../servicios/foodtruck.service";
 import { Foodtruck } from '../../modelos/foodtruck'
 @Component({
   selector: 'app-foodtruck-list',
@@ -10,9 +12,14 @@ import { Foodtruck } from '../../modelos/foodtruck'
 })
 export class FoodtruckListComponent implements OnInit {
 
-  foodtrucks: Foodtruck = []
+  foodtrucks: Foodtruck[];
 
-  constructor(private autenticacionService:AutenticacionService, private usuarioService:UsuarioService) { }
+  constructor(
+    private autenticacionService:AutenticacionService,
+    private usuarioService:UsuarioService,
+    private foodtruckService:FoodtruckService,
+    private router:Router
+  ) { }
 
   ngOnInit(): void {
     this.getUserFoodtrucks();
@@ -28,6 +35,13 @@ export class FoodtruckListComponent implements OnInit {
       },
       err => console.error(err)
     )
+  }
+
+  delete(ft:Foodtruck) {
+    this.foodtrucks = this.foodtrucks.filter(f => f!==ft);
+    this.foodtruckService.deleteFoodtruck(ft)
+    .subscribe(
+    );
   }
 
 }

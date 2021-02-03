@@ -1,6 +1,10 @@
 <div class="container">
   <h2>Bienvenido: {{ usuario.nombre }}</h2>
-  <a [routerLink]="['/login']">Cerrar sesion</a>
+  <div class="">
+    <a [routerLink]="['./editar', usuario.id]">Editar mis datos</a><br>
+    <a routerLink=''>Eliminar cuenta</a><br>
+    <a routerLink='/login'>Cerrar sesion</a><br>
+  </div>
   <div class="">
     <h4>Mis datos:</h4>
     <ul>
@@ -9,10 +13,15 @@
       <li>{{ usuario.email }}</li>
     </ul>
   </div>
-  <div class="">
-    <a [routerLink]="['/users/perfil/editar', usuario.id]">Editar</a><br>
-    <button class="btn btn-primary btn-sm" (click)="showFoodtrucks()">Ver Foodtrucks</button>
-    <button class="btn btn-primary btn-sm" (click)="newFoodtruck()">Nuevo Foodtruck</button>
+  <div [ngSwitch]="usuario.rol">
+    <div *ngSwitchCase="'Foodtrucker'">
+      <button class="btn btn-primary btn-sm" (click)="showFoodtrucks()">Ver Foodtrucks</button>
+      <button class="btn btn-primary btn-sm" (click)="newFoodtruck()">Nuevo Foodtruck</button>
+    </div>
+    <div *ngSwitchCase="'Organizador'">
+      <button class="btn btn-primary btn-sm" (click)="showEvents()">Ver Eventos</button>
+      <button class="btn btn-primary btn-sm" (click)="newEvent()">Nuevo Evento</button>
+    </div>
   </div>
   <div class="">
     <router-outlet></router-outlet>

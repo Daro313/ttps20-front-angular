@@ -13,16 +13,19 @@ export class FoodtruckService {
   constructor(private http:HttpClient) { }
 
 
-  createFoodtruck(f:Foodtruck){
-    return this.http.post<any>(`${this.API_URI}/foodtrucks`,f)
+  createFoodtruck(ft:Foodtruck) {
+    return this.http.post<any>(`${this.API_URI}/foodtrucks`,ft)
   }
 
-  /*
-  createUsuario(u:Usuario) {
-    if (u.rol == 'Foodtrucker') {
-      return this.http.post<any>(`${this.API_URI}/foodtruckers`,u)
-    }
-    return this.http.post<any>(`${this.API_URI}/organizadores`,u)
+  updateFoodtruck(ft:Foodtruck) {
+    return this.http.put<any>(`${this.API_URI}/foodtrucks/${ft.id}`,ft)
   }
-  */
+
+  getFoodtruckById(id:number) {
+    return this.http.get<any>(`${this.API_URI}/foodtrucks/${id}`)
+  }
+
+  deleteFoodtruck(ft:Foodtruck): Observable<Foodtruck> {
+    return this.http.delete<Foodtruck>(`${this.API_URI}/foodtrucks/${ft.id}`)
+  }
 }

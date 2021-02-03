@@ -1,4 +1,6 @@
 import { Usuario } from "./usuario";
+import { TipoDeServicio } from "./tipoDeServicio";
+
 export interface Foodtruck {
   ftId?: number;
   nombre: string;
@@ -8,7 +10,7 @@ export interface Foodtruck {
   instagram: string;
   twitter: string;
   foodtrucker?: any;
-  servicios?: string;
+  servicios?: TipoDeServicio[];
   ubicacion?: string;
   reserva?: string;
   puntaje?: string;

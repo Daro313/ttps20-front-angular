@@ -1,5 +1,6 @@
 <div class="container">
-  <h2>Foodtruck</h2>
+  <h2 *ngIf="!edit">Nuevo Foodtruck</h2>
+  <h2 *ngIf="edit">Actualizar datos del Foodtruck</h2>
   <form (ngSubmit)="edit ? updateFoodtruck() : saveFoodtruck()" #usuarioForm="ngForm">
     <div class="form-group">
       <label for="nombre">Nombre del foodtruck</label><br>
@@ -7,7 +8,7 @@
     </div>
     <div class="form-group">
       <label for="descripcion">Descripcion</label><br>
-      <input [(ngModel)]="foodtruck.descripcion" type="text" class="form-control" name="descripcion" required>
+      <textarea class="form-control" rows="5" [(ngModel)]="foodtruck.descripcion" name="descripcion" required></textarea>
     </div>
     <div class="form-group">
       <label for="url">Pagina web</label><br>
@@ -26,16 +27,13 @@
       <input [(ngModel)]="foodtruck.twitter" type="text" class="form-control" name="twitter" required>
     </div>
     <div class="form-group">
-      <label for="sTipo">Tipo de servicio</label><br>
-      <select [(ngModel)]="foodtruck.servicio" class="form-control" name="sTipo" required>
-        <option *ngFor="let s of sTipo" [value]="s">{{t}}</option>
-      </select>
-    </div>
-    <div class="from-group">
-      <label for="imagen">Subir imagenes</label>
-      <input type="file" name="imagen" value="imagen">
+      <label for="sTipo">Tipo de servicio</label>
+      <div class="form-check" *ngFor="let s of sTipo">
+        <label class="form-check-label" >
+          <input type="checkbox" class="form-check-input" value="{{s.servicio}}" [checked]="comprobar(s.id)" (change)="onChange(s, $event.target.checked)">{{s.servicio}}
+        </label>
+      </div>
     </div>
     <button type="submit" class="btn btn-success" name="">Guardar</button>
-    <button type="reset" class="btn btn-secondary" name="button">Limpiar</button>
   </form>
 </div>

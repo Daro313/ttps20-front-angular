@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { AuthGuard } from './guards/auth.guard';
 import { TokenInterceptor } from './helpers/token.interceptor';
 import { AppRoutingModule, routingComponents } from './app-routing.module';
+import { FoodtrucksDetailComponent } from './components/foodtrucks-detail/foodtrucks-detail/foodtrucks-detail.component';
 
 
 
@@ -16,6 +17,7 @@ import { AppRoutingModule, routingComponents } from './app-routing.module';
   declarations: [
     AppComponent,
     routingComponents,
+    FoodtrucksDetailComponent,
   ],
   imports: [
     BrowserModule,
