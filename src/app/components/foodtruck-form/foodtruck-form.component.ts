@@ -33,7 +33,6 @@ export class FoodtruckFormComponent implements OnInit {
     servicios: []
   };
 
-
   constructor(
     private autenticacionService:AutenticacionService,
     private foodtruckService:FoodtruckService,

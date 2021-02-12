@@ -48,12 +48,20 @@ export class PerfilComponent implements OnInit {
     this.router.navigate(['/login']);
   }
 
-  showFoodtrucks(): void{
+  showFoodtrucks() {
     this.router.navigate(['foodtrucks'], {relativeTo: this.route});
   }
 
-  newFoodtruck(): void{
+  newFoodtruck() {
     this.router.navigate(['foodtrucks/new'], {relativeTo: this.route});
+  }
+
+  showEvents() {
+
+  }
+
+  newEvent() {
+    
   }
 
 }

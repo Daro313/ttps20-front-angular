@@ -1,1 +1,62 @@
-<p>foodtrucks-detail works!</p>
+<hr>
+<h2>Detalles foodtruck</h2>
+<hr>
+ <table class="table table-dark table-hover">
+         <tr>
+             <th>Nombre</th>
+             <td>{{ft?.nombre}}</td>
+         </tr>
+         <tr>
+             <th>Descripcion</th>
+             <td>{{ft?.descripcion}}</td>
+         </tr>
+         <tr>
+             <th>Provincia</th>
+             <td>{{ft?.ubicacion?.provincia}}</td>
+         </tr>
+         <tr>
+             <th>Ciudad</th>
+             <td>{{ft?.ubicacion?.ciudad}}</td>
+         </tr>
+         <tr>
+             <th>Direccion</th>
+             <td>{{ft?.ubicacion?.direccion}}</td>
+         </tr>
+         <tr>
+             <th>URL</th>
+             <td>{{ft?.url}}</td>
+         </tr>
+         <tr>
+             <th>Whatsapp</th>
+             <td>{{ft?.whatsapp}}</td>
+         </tr>
+         <tr>
+             <th>Instagram</th>
+             <td>{{ft?.instagram}}</td>
+         </tr>
+         <tr>
+             <th>Twitter</th>
+             <td>{{ft?.twitter}}</td>
+         </tr>
+         <tr>
+             <th>Servicios</th>
+             <td><ul *ngFor="let s of ft?.servicios">
+               <li>{{s.servicio}}</li>
+             </ul></td>
+         </tr>
+         <tr>
+             <th>Puntajes</th>
+             <td><ul *ngFor="let p of ft?.puntajes">
+               <li>Disenio: {{p.puntosDisenio}}</li>
+               <li>Calidad/Precio: {{p.puntosCalidadPrecio}}</li>
+               <li>Sabor: {{p.puntosSabor}}</li>
+               <li>Limpieza: {{p.puntosLimpieza}}</li>
+               <li>Simpatia {{p.puntosSimpatia}}</li>
+             </ul></td>
+         </tr>
+     </table>
+     <hr>
+     IMAGENES: <br>
+     <div class="col-md-4">
+       <img src="{{ft?.imagenes[0]?.url}}" alt="Imagen foodtruck" class="card-img-top">
+     </div>
