@@ -2,7 +2,7 @@
   <h2>Bienvenido: {{ usuario.nombre }}</h2>
   <div class="">
     <a [routerLink]="['./editar', usuario.id]">Editar mis datos</a><br>
-    <a routerLink=''>Eliminar cuenta</a><br>
+    <a (click)="delete(usuario)">Eliminar cuenta</a><br>
     <a routerLink='/login'>Cerrar sesion</a><br>
   </div>
   <div class="">

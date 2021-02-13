@@ -38,4 +38,11 @@ export class UsuarioService {
     return this.http.get<any>(`${this.API_URI}/foodtruckers/${userId}/foodtrucks`)
   }
 
+  deleteUser(u:Usuario) {
+    if (u.rol == 'Foodtrucker') {
+      return this.http.delete<Usuario>(`${this.API_URI}/foodtruckers/${u.id}`)
+    }
+    return this.http.delete<Usuario>(`${this.API_URI}/organizadores/${u.id}`)
+  }
+
 }

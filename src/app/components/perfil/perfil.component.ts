@@ -61,7 +61,12 @@ export class PerfilComponent implements OnInit {
   }
 
   newEvent() {
-    
+
+  }
+
+  delete(u:Usuario) {
+    this.usuarioService.deleteUser(u)
+    .subscribe(alert('Cuenta eliminada con exito :('));
   }
 
 }
