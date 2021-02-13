@@ -32,12 +32,14 @@ export class UserFormComponent {
 
   ngOnInit(): void {
     const params = this.activatedRoute.snapshot.params;
+    const rol = this.autenticacionService.currentUserValue.rol;
     if (params.id){
-      this.usuarioService.getUsuarioById(params.id,this.autenticacionService.currentUserValue.rol)
+      this.usuarioService.getUsuarioById(params.id,rol)
       .subscribe(
         res => {
           console.log(res);
           this.usuario = res;
+          this.usuario.rol = rol;
           this.edit = true;
         },
         err => console.error(err)
@@ -65,6 +67,10 @@ export class UserFormComponent {
       },
       err => console.error(err)
     )
+  }
+
+  compararSeleccion(s1:any,s2:any ) {
+    return s1 && s2 ? s1 === s2 : s1 === s2;
   }
 
 }

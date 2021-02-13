@@ -21,8 +21,8 @@
     </div>
     <div  class="form-group" *ngIf="!edit">
       <label for="uTipo">Tipo de usuario</label><br>
-      <select [(ngModel)]="usuario.rol" class="form-control" name="uTipo" required>
-        <option *ngFor="let t of uTipo" [value]="t">{{t}}</option>
+      <select [(ngModel)]="usuario.rol" [compareWith]="compararSeleccion" class="form-control" name="uTipo" required>
+        <option *ngFor="let t of uTipo" [ngValue]="t">{{t}}</option>
       </select>
     </div>
     <button type="submit" class="btn btn-success" name="">Guardar</button>
