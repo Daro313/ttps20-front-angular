@@ -29,6 +29,7 @@ export class FoodtruckFormComponent implements OnInit {
     twitter: '',
     instagram: '',
     whatsapp: '',
+    ubicacion: {},
     foodtrucker: {},
     servicios: []
   };
@@ -80,8 +81,8 @@ export class FoodtruckFormComponent implements OnInit {
     this.foodtruckService.createFoodtruck(this.foodtruck)
     .subscribe(
       res => {
-        alert('Foodtruck creado con exito');
         this.router.navigate(['users/perfil/foodtrucks']);
+        alert('Foodtruck creado con exito');
       },
       err => {
         console.error(err);

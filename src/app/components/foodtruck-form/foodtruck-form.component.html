@@ -11,6 +11,18 @@
       <textarea class="form-control" rows="5" [(ngModel)]="foodtruck.descripcion" name="descripcion" required></textarea>
     </div>
     <div class="form-group">
+      <label for="provincia">Provincia</label><br>
+      <input type="text" name="provincia" [(ngModel)]="foodtruck.ubicacion.provincia" class="form-control" required>
+    </div>
+    <div class="form-group">
+      <label for="ciudad">Ciudad</label><br>
+      <input type="text" name="ciudad" [(ngModel)]="foodtruck.ubicacion.ciudad" class="form-control" required>
+    </div>
+    <div class="form-group">
+      <label for="direccion">Direccion</label><br>
+      <input type="text" name="direccion" [(ngModel)]="foodtruck.ubicacion.direccion" class="form-control" required>
+    </div>
+    <div class="form-group">
       <label for="url">Pagina web</label><br>
       <input [(ngModel)]="foodtruck.url" type="url" class="form-control" name="url" required>
     </div>
