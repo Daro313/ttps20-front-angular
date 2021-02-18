@@ -107,7 +107,7 @@ export class FoodtruckFormComponent implements OnInit {
     );
   }
 
-  comprobar(id:number):boolean {
+  checkSelected(id:number):boolean {
     return this.foodtruck.servicios!.some(e => e.id == id);
   }
 

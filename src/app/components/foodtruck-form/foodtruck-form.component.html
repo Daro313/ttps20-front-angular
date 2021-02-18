@@ -55,7 +55,7 @@
       <label for="sTipo">Tipo de servicio</label>
       <div class="form-check" *ngFor="let s of sTipo">
         <label class="form-check-label" >
-          <input type="checkbox" class="form-check-input" value="{{s.servicio}}" [checked]="comprobar(s.id)" (change)="onChange(s, $event.target.checked)">{{s.servicio}}
+          <input type="checkbox" class="form-check-input" value="{{s.servicio}}" [checked]="checkSelected(s.id)" (change)="onChange(s, $event.target.checked)">{{s.servicio}}
         </label>
       </div>
     </div>
