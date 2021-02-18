@@ -1,5 +1,5 @@
-export interface ImagenFt {
+export class ImagenFt {
   id?: number;
   nombre: string;
-  url: string;
+  path: string;
 }

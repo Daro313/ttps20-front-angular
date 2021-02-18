@@ -1,7 +1,7 @@
 <div class="container">
   <h2 *ngIf="!edit">Nuevo Foodtruck</h2>
   <h2 *ngIf="edit">Actualizar datos del Foodtruck</h2>
-  <form (ngSubmit)="edit ? updateFoodtruck() : saveFoodtruck()" #usuarioForm="ngForm">
+  <form (ngSubmit)="edit ? updateFoodtruck() : saveFoodtruck()" #foodtruckForm="ngForm">
     <div class="form-group">
       <label for="nombre">Nombre del foodtruck</label><br>
       <input [(ngModel)]="foodtruck.nombre" type="text" class="form-control" name="nombre" required>
@@ -21,6 +21,19 @@
     <div class="form-group">
       <label for="direccion">Direccion</label><br>
       <input type="text" name="direccion" [(ngModel)]="foodtruck.ubicacion.direccion" class="form-control" required>
+    </div>
+    <label>Agregar imagenes</label><br>
+    <button type="button" class="btn btn-success" (click)="addImgInput()">+</button>
+    <div class="form-row" *ngFor="let img of foodtruck.imagenes; let i=index">
+      <div class="col-md-4">
+        <input type="text" name="imgNombre{{i}}" [(ngModel)]="img.nombre" class="form-control" placeholder="Nombre">
+      </div>
+      <div class="col-md-6">
+        <input type="text" name="imgUrl{{i}}" [(ngModel)]="img.path" class="form-control" placeholder="URL de la imagen" required>
+      </div>
+      <div class="col-md-2">
+        <span type="button" class="btn btn-danger" (click)="removeImgInput(i)" *ngIf="i!=0">-</span>
+      </div>
     </div>
     <div class="form-group">
       <label for="url">Pagina web</label><br>

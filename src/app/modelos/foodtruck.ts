@@ -16,7 +16,7 @@ export class Foodtruck {
     foodtrucker?: any,
     servicios?: TipoDeServicio[],
     ubicacion?: Ubicacion,
-    imagenes?: ImagenFt,
+    imagenes?: ImagenFt[],
     puntajes?: Puntaje[],
   ){}
 

@@ -8,6 +8,7 @@ import { UsuarioService } from '../../servicios/usuario.service';
 import { AutenticacionService } from '../../servicios/autenticacion.service';
 import { TipoDeServicio } from '../../modelos/tipoDeServicio';
 import { TipoDeServicioService } from "../../servicios/tipo-de-servicio.service";
+import { ImagenFt } from "../../modelos/imagenFt";
 
 @Component({
   selector: 'app-foodtruck-form',
@@ -20,6 +21,7 @@ export class FoodtruckFormComponent implements OnInit {
   submitted = false;
   edit = false;
   sTipo: TipoDeServicio[];
+  img= new ImagenFt();
 
   foodtruck: Foodtruck = {
     ftId: 0,
@@ -31,6 +33,7 @@ export class FoodtruckFormComponent implements OnInit {
     whatsapp: '',
     ubicacion: {},
     foodtrucker: {},
+    imagenes:[],
     servicios: []
   };
 
@@ -44,6 +47,9 @@ export class FoodtruckFormComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.img=new ImagenFt();
+    this.foodtruck.imagenes.push(this.img);
+
     this.tServicio.getAll().subscribe(data => this.sTipo = data);
     const params = this.activatedRoute.snapshot.params;
     if(params.id) {
@@ -111,6 +117,15 @@ export class FoodtruckFormComponent implements OnInit {
     } else {
       this.foodtruck.servicios = this.foodtruck.servicios!.filter(e => e.id !== s.id);
     }
+  }
+
+  addImgInput() {
+    this.img = new ImagenFt();
+    this.foodtruck.imagenes.push(this.img);
+  }
+
+  removeImgInput(index) {
+    this.foodtruck.imagenes.splice(index,1);
   }
 
 }
